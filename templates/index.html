@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify Listener Segmentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1DB954;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background: #111;
+            padding: 30px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #1DB954;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1><span>🎧</span> Spotify Listener Segmentation</h1>
+    <p>Enter your music feature scores to discover your audio identity</p>
+
+    <div class="container">
+        <form method="POST">
+            <input type="number" name="danceability" step="0.01" min="0" max="10" placeholder="Danceability (0 to 10)" required><br>
+            <input type="number" name="energy" step="0.01" min="0" max="10" placeholder="Energy (0 to 10)" required><br>
+            <input type="number" name="valence" step="0.01" min="0" max="10" placeholder="Valence (0 to 10)" required><br>
+            <input type="number" name="tempo" step="0.01" placeholder="Tempo (BPM)" required><br>
+            <input type="number" name="acousticness" step="0.01" min="0" max="10" placeholder="Acousticness (0 to 10)" required><br>
+            <button type="submit">Predict Cluster</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
